@@ -1,0 +1,550 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Vi | DIAN</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="DIAN">
+    
+
+    
+    <meta name="description" content="vi编辑器有3种模式：命令模式、输入模式、末行模式。掌握这三种模式十分重要：
+
+
+命令模式：
+
+vi启动后默认进入的是命令模式，从这个模式使用命令可以切换到另外两种模式，同时无论在 任何模式下只要按一下[Esc]键都可以返回命令模式。在命令模式中输入字幕“i”就可以进入vi的输入模式编辑文件。
+
+输入模式：
+
+在这个模式中我们可以编辑、修改、输入等编辑工作，在编辑器最后一行显示一个“–INSERT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vi">
+<meta property="og:url" content="http://lindian.github.io/post/Vi/index.html">
+<meta property="og:site_name" content="DIAN">
+<meta property="og:description" content="vi编辑器有3种模式：命令模式、输入模式、末行模式。掌握这三种模式十分重要：
+
+
+命令模式：
+
+vi启动后默认进入的是命令模式，从这个模式使用命令可以切换到另外两种模式，同时无论在 任何模式下只要按一下[Esc]键都可以返回命令模式。在命令模式中输入字幕“i”就可以进入vi的输入模式编辑文件。
+
+输入模式：
+
+在这个模式中我们可以编辑、修改、输入等编辑工作，在编辑器最后一行显示一个“–INSERT">
+<meta property="og:updated_time" content="2016-06-13T02:52:55.396Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vi">
+<meta name="twitter:description" content="vi编辑器有3种模式：命令模式、输入模式、末行模式。掌握这三种模式十分重要：
+
+
+命令模式：
+
+vi启动后默认进入的是命令模式，从这个模式使用命令可以切换到另外两种模式，同时无论在 任何模式下只要按一下[Esc]键都可以返回命令模式。在命令模式中输入字幕“i”就可以进入vi的输入模式编辑文件。
+
+输入模式：
+
+在这个模式中我们可以编辑、修改、输入等编辑工作，在编辑器最后一行显示一个“–INSERT">
+<meta name="twitter:creator" content="@qweqweqweqweqweqweqweqweqweqweqwe">
+
+    
+    <link rel="alternative" href="/atom.xml" title="DIAN" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="DIAN" title="DIAN"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="DIAN">DIAN</a></h1>
+				<h2 class="blog-motto">DIAN&#39;s Blog</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:lindian.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/post/Vi/" title="Vi" itemprop="url">Vi</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="DIAN" target="_blank" itemprop="author">DIAN</a>
+		
+  <p class="article-time">
+    <time datetime="2016-06-13T01:36:05.000Z" itemprop="datePublished"> 发表于 2016-06-13</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#进入vi的命令"><span class="toc-number">1.</span> <span class="toc-text">进入vi的命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#移动光标类命令"><span class="toc-number">2.</span> <span class="toc-text">移动光标类命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#屏幕翻滚类命令"><span class="toc-number">3.</span> <span class="toc-text">屏幕翻滚类命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#插入文本类命令（文本输入模式）"><span class="toc-number">4.</span> <span class="toc-text">插入文本类命令（文本输入模式）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除命令"><span class="toc-number">5.</span> <span class="toc-text">删除命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复制操作"><span class="toc-number">6.</span> <span class="toc-text">复制操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#撤销操作"><span class="toc-number">7.</span> <span class="toc-text">撤销操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#搜索及替换命令"><span class="toc-number">8.</span> <span class="toc-text">搜索及替换命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选项设置"><span class="toc-number">9.</span> <span class="toc-text">选项设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最后行方式命令（末行模式）"><span class="toc-number">10.</span> <span class="toc-text">最后行方式命令（末行模式）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#恢复文件"><span class="toc-number">11.</span> <span class="toc-text">恢复文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#寄存器操作"><span class="toc-number">12.</span> <span class="toc-text">寄存器操作</span></a></li></ol>
+		
+		</div>
+		
+		<p>vi编辑器有3种模式：命令模式、输入模式、末行模式。掌握这三种模式十分重要：</p>
+<hr>
+<blockquote>
+<p>命令模式：</p>
+</blockquote>
+<p>vi启动后默认进入的是命令模式，从这个模式使用命令可以切换到另外两种模式，同时无论在<br> 任何模式下只要按一下[Esc]键都可以返回命令模式。在命令模式中输入字幕“i”就可以进入vi的输入模式编<br>辑文件。</p>
+<blockquote>
+<p>输入模式：</p>
+</blockquote>
+<p>在这个模式中我们可以编辑、修改、输入等编辑工作，在编辑器最后一行显示一个“–INSERT<br>–”标志着vi进入了输入模式。当我们完成修改输入等操作的时候我们需要保存文件，这时我们需要先返回命<br>令模式，在进入末行模式保存。</p>
+<blockquote>
+<p>末行模式：</p>
+</blockquote>
+<p>在命令模式输入“：”即可进入该模式，在末行模式中有好多好用的命令。</p>
+<h3 id="进入vi的命令"><a href="#进入vi的命令" class="headerlink" title="进入vi的命令"></a><strong>进入vi的命令</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vi filename :打开或新建文件，并将光标置于第一行首</span><br><span class="line">vi +n filename ：打开文件，并将光标置于第n行首</span><br><span class="line">vi + filename ：打开文件，并将光标置于最后一行首</span><br><span class="line">vi +/pattern filename：打开文件，并将光标置于第一个与pattern匹配的串处</span><br><span class="line">vi -r filename ：在上次正用vi编辑时发生系统崩溃，恢复filename</span><br><span class="line">vi filename....filename ：打开多个文件，依次进行编辑</span><br></pre></td></tr></table></figure>
+<h3 id="移动光标类命令"><a href="#移动光标类命令" class="headerlink" title="移动光标类命令"></a><strong>移动光标类命令</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">h或Backspace：光标左移一个字符</span><br><span class="line">l或space ：光标右移一个字符</span><br><span class="line">k或Ctrl+p：光标上移一行</span><br><span class="line">j或Ctrl+n或Enter ：光标下移一行</span><br><span class="line">w或W ：光标右移一个字至字首</span><br><span class="line">b或B ：光标左移一个字至字首</span><br><span class="line">e或E ：光标右移一个字至字尾</span><br><span class="line">) ：光标移至句尾</span><br><span class="line">( ：光标移至句首</span><br><span class="line">&#125; ：光标移至段落开头</span><br><span class="line">&#123; ：光标移至段落结尾</span><br><span class="line">nG：光标移至第n行首</span><br><span class="line">n+：光标下移n行</span><br><span class="line">n-：光标上移n行</span><br><span class="line">n$：光标移至第n行尾</span><br><span class="line">H ：光标移至屏幕顶行</span><br><span class="line">M ：光标移至屏幕中间行</span><br><span class="line">L ：光标移至屏幕最后行</span><br><span class="line">0 ：（注意是数字零）光标移至当前行首</span><br><span class="line">$ ：光标移至当前行尾</span><br></pre></td></tr></table></figure>
+<h3 id="屏幕翻滚类命令"><a href="#屏幕翻滚类命令" class="headerlink" title="屏幕翻滚类命令"></a><strong>屏幕翻滚类命令</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+u：向文件首翻半屏</span><br><span class="line">Ctrl+d：向文件尾翻半屏</span><br><span class="line">Ctrl+f：向文件尾翻一屏</span><br><span class="line">Ctrl＋b；向文件首翻一屏</span><br><span class="line">nz：将第n行滚至屏幕顶部，不指定n时将当前行滚至屏幕顶部。</span><br></pre></td></tr></table></figure>
+<h3 id="插入文本类命令（文本输入模式）"><a href="#插入文本类命令（文本输入模式）" class="headerlink" title="插入文本类命令（文本输入模式）"></a><strong>插入文本类命令（文本输入模式）</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">i ：在光标前</span><br><span class="line">I ：在当前行首</span><br><span class="line">a：光标后</span><br><span class="line">A：在当前行尾</span><br><span class="line">o：在当前行之下新开一行</span><br><span class="line">O：在当前行之上新开一行</span><br><span class="line">r：替换当前字符</span><br><span class="line">R：替换当前字符及其后的字符，直至按ESC键</span><br><span class="line">s：从当前光标位置处开始，以输入的文本替代指定数目的字符</span><br><span class="line">S：删除指定数目的行，并以所输入文本代替之</span><br><span class="line">ncw或nCW：修改指定数目的字</span><br><span class="line">nCC：修改指定数目的行</span><br></pre></td></tr></table></figure>
+<h3 id="删除命令"><a href="#删除命令" class="headerlink" title="删除命令"></a><strong>删除命令</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ndw或ndW：删除光标处开始及其后的n-1个字</span><br><span class="line">do：删至行首</span><br><span class="line">d$：删至行尾</span><br><span class="line">ndd：删除当前行及其后n-1行</span><br><span class="line">dd: 删除一行</span><br><span class="line">x或X：删除一个字符，x删除光标后的，而X删除光标前的</span><br><span class="line">Ctrl+u：删除输入方式下所输入的文本</span><br></pre></td></tr></table></figure>
+<h3 id="复制操作"><a href="#复制操作" class="headerlink" title="复制操作"></a><strong>复制操作</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yy命令复制当前整行的内容到vi缓冲区</span><br><span class="line">yw复制当前光标所在位置到单词尾字符的内容到vi缓存区，相当于复制一个单词</span><br><span class="line">y$复制光标所在位置到行尾内容到缓存区</span><br><span class="line">y^复制光标所在位置到行首内容到缓存区</span><br><span class="line">#yy例如：5yy就是复制5行</span><br><span class="line">#yw例如：2yw就是复制两个单词</span><br><span class="line">　　如果要复制第m行到第n行之间的内容，可以在末行模式中输入m，ny例如：3，5y复制第三行到第五行内容到缓存区。</span><br><span class="line">粘贴缓冲区中的内容，用p</span><br></pre></td></tr></table></figure>
+<h3 id="撤销操作"><a href="#撤销操作" class="headerlink" title="撤销操作"></a><strong>撤销操作</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">u命令取消最近一次的操作，可以使用多次来恢复原有的操作</span><br><span class="line">U取消所有操作</span><br><span class="line">Ctrl+R可以恢复对使用u命令的操作</span><br></pre></td></tr></table></figure>
+<h3 id="搜索及替换命令"><a href="#搜索及替换命令" class="headerlink" title="搜索及替换命令"></a><strong>搜索及替换命令</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">vi的查找和替换功能主要在末行模式完成：</span><br><span class="line"></span><br><span class="line">至上而下的查找</span><br><span class="line">　　/ 要查找的字符窜，其中/代表从光标所在位置起开始查找，例如：/ work</span><br><span class="line"></span><br><span class="line">至下而上的查找</span><br><span class="line">　　？要查找的字符窜 例如：/ work</span><br><span class="line"></span><br><span class="line">替换</span><br><span class="line">　　:s/old/new用new替换行中首次出现的old</span><br><span class="line">　　: s/old/new/g 用new替换行中所有出现的old</span><br><span class="line">　　:#,# s/old/new/g用new替换从第＃行到第＃行中出现的old</span><br><span class="line">　　：% s/old/new/g用new替换整篇中出现的old</span><br></pre></td></tr></table></figure>
+<h3 id="选项设置"><a href="#选项设置" class="headerlink" title="选项设置"></a><strong>选项设置</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">:set nu 显示行号</span><br><span class="line">:set nonu 隐藏行号</span><br><span class="line">:set showmode 显示当前操作模式（如用vedit将自动打开）</span><br><span class="line">:set noshowmode 关闭模式显示</span><br><span class="line">:set 显示所有vi变量</span><br><span class="line">:set all 显示所有可能的vi变量和它们的当前的值</span><br><span class="line">all：列出所有选项设置情况</span><br><span class="line">term：设置终端类型</span><br><span class="line">ignorance：在搜索中忽略大小写</span><br><span class="line">list：显示制表位(Ctrl+I)和行尾标志（$)</span><br><span class="line">number：显示行号</span><br><span class="line">report：显示由面向行的命令修改过的数目</span><br><span class="line">terse：显示简短的警告信息</span><br><span class="line">warn：在转到别的文件时若没保存当前文件则显示NO write信息</span><br><span class="line">nomagic：允许在搜索模式中，使用前面不带“\”的特殊字符</span><br><span class="line">nowrapscan：禁止vi在搜索到达文件两端时，又从另一端开始</span><br><span class="line">mesg：允许vi显示其他用户用write写到自己终端上的信息</span><br></pre></td></tr></table></figure>
+<h3 id="最后行方式命令（末行模式）"><a href="#最后行方式命令（末行模式）" class="headerlink" title="最后行方式命令（末行模式）"></a><strong>最后行方式命令（末行模式）</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">：n1,n2 co n3：将n1行到n2行之间的内容拷贝到第n3行下</span><br><span class="line">：n1,n2 m n3：将n1行到n2行之间的内容移至到第n3行下</span><br><span class="line">：n1,n2 d ：将n1行到n2行之间的内容删除</span><br><span class="line">：w ：保存当前文件</span><br><span class="line">：e filename：打开文件filename进行编辑</span><br><span class="line">：x：保存当前文件并退出</span><br><span class="line">：q：退出vi</span><br><span class="line">：q!：不保存文件并退出vi</span><br><span class="line">：!command：执行shell命令command</span><br><span class="line">：n1,n2 w!command：将文件中n1行至n2行的内容作为command的输入并执行之，若不指定n1，n2，则表示将整</span><br><span class="line"></span><br><span class="line">个文件内容作为command的输入</span><br><span class="line">：r!command：将命令command的输出结果放到当前行</span><br></pre></td></tr></table></figure>
+<h3 id="恢复文件"><a href="#恢复文件" class="headerlink" title="恢复文件"></a><strong>恢复文件</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">vi在编辑某一个文件时，会生成一个临时文件，这个文件以 . 开头并以 .swp结尾。正常退出该文件自动</span><br><span class="line">    删除，如果意外退出例如忽然断电，该文件不会删除，我们在下次编辑时可以选择一下命令处理：</span><br><span class="line">O只读打开，不改变文件内容</span><br><span class="line">E继续编辑文件，不恢复.swp文件保存的内容</span><br><span class="line">R将恢复上次编辑以后未保存文件内容</span><br><span class="line">Q退出vi</span><br><span class="line">D删除.swp文件</span><br><span class="line">或者使用vi －r 文件名来恢复未保存的内容</span><br></pre></td></tr></table></figure>
+<h3 id="寄存器操作"><a href="#寄存器操作" class="headerlink" title="寄存器操作"></a><strong>寄存器操作</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;?nyy：将当前行及其下n行的内容保存到寄存器？中，其中?为一个字母，n为一个数字</span><br><span class="line">&quot;?nyw：将当前行及其下n个字保存到寄存器？中，其中?为一个字母，n为一个数字</span><br><span class="line">&quot;?nyl：将当前行及其下n个字符保存到寄存器？中，其中?为一个字母，n为一个数字</span><br><span class="line">&quot;?p：取出寄存器？中的内容并将其放到光标位置处。这里？可以是一个字母，也可以是一个数字</span><br><span class="line">ndd：将当前行及其下共n行文本删除，并将所删内容放到1号删除寄存器中。</span><br></pre></td></tr></table></figure>
+<hr>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/UNIX/">UNIX</a>
+</div>
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://lindian.github.io/post/Vi/" data-title="Vi | DIAN" data-tsina="3157711184" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/post/hello-world/"  title="Hello World">
+ <strong>下一篇：</strong><br/> 
+ <span>Hello World
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="post/Vi/" data-title="Vi" data-url="http://lindian.github.io/post/Vi/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#进入vi的命令"><span class="toc-number">1.</span> <span class="toc-text">进入vi的命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#移动光标类命令"><span class="toc-number">2.</span> <span class="toc-text">移动光标类命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#屏幕翻滚类命令"><span class="toc-number">3.</span> <span class="toc-text">屏幕翻滚类命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#插入文本类命令（文本输入模式）"><span class="toc-number">4.</span> <span class="toc-text">插入文本类命令（文本输入模式）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除命令"><span class="toc-number">5.</span> <span class="toc-text">删除命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复制操作"><span class="toc-number">6.</span> <span class="toc-text">复制操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#撤销操作"><span class="toc-number">7.</span> <span class="toc-text">撤销操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#搜索及替换命令"><span class="toc-number">8.</span> <span class="toc-text">搜索及替换命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选项设置"><span class="toc-number">9.</span> <span class="toc-text">选项设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最后行方式命令（末行模式）"><span class="toc-number">10.</span> <span class="toc-text">最后行方式命令（末行模式）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#恢复文件"><span class="toc-number">11.</span> <span class="toc-text">恢复文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#寄存器操作"><span class="toc-number">12.</span> <span class="toc-text">寄存器操作</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="lindian" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Hello-World/" title="Hello World">Hello World<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/UNIX/" title="UNIX">UNIX<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://github.com/wsgzao" target="_blank" title="Hello Dog">Hello Dog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=3157711184&verifier=249ceff0&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> https://lindian.github.io/ <br/>
+			　　Hello, I&#39;m DIAN. This is my blog on GitHub. </p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/3157711184" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/lindian" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/qweqweqweqweqweqweqweqweqweqweqwe" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		<a href="https://twitter.com/qweqweqweqweqweqweqweqweqweqweqwe" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/qweqweqweqweqweqweqweqweqweqweqwe" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/qweqweqweqweqweqweqweqweqweqweqwe" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		
+		<a href="http://www.zhihu.com/people/qweqweqweqweqweqweqweqweqweqweqwe" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:ta_shuo@126.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="DIAN">DIAN</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"lindian"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?74bfb38fd946b1435211556c1973696d";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
